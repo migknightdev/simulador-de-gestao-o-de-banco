@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the bank</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gui.css">
+</head>
+<body>
+    <script>
+        (function () {
+            const tema = localStorage.getItem('theme') || 'dark';
+            if (tema === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+    </script>
+    <A href="principal.html">Voltar</A>
+    <h1>faça logon na sua conta!</h1>
+    <input type="username" name="nickname" id="loginName" placeholder="username"><br>
+    <input type="password"  name="password" id="loginPassword" placeholder="Senha"><br>
+    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Mostrar Senha<br>
+    <button onclick="login()">Login</button>
+
+    <script src="infologin.js"></script>
+    <script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById('loginPassword');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+function login() {
+    let name = document.getElementById('loginName').value;
+    let password = document.getElementById('loginPassword').value;
+
+    if (!name || !password) {
+        alert('Por favor, preencha o nome de usuário e a senha.');
+        return;
+    }
+
+    // Verificar se existe um login com nome e senha correspondentes no infologin.js
+    let loginEncontrado = logins.find(login => login.nome === name && login.senha === password);
+
+    if (loginEncontrado) {
+        alert('Login bem-sucedido! Redirecionando para o jogo...');
+        localStorage.setItem('currentUser', name); // Armazena o usuário logado
+        window.location.href = 'menu.html';
+    } else {
+        alert('Nome de usuário ou senha incorretos.');
+    }
+}
+</script>
+
+    <!-- GUI -->
+    <div id="guiOverlay" class="gui-overlay hidden">
+        <div class="guiAlert">
+            <p id="alerta"></p>
+            <div class="gui-buttons">
+                <button class="hidden" id="guiOk">OK</button>
+                <button class="hidden" id="guiCancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="jogofuncoes.js"></script>
+</body>
+</html>
+

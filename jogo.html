@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The bank</title>
+    <link rel="stylesheet" href="sttlejogo.css">
+    <link rel="stylesheet" href="buttonfake.css">
+    <link rel="stylesheet" href="gui.css">
+    <script defer src="infologin.js"></script>
+</head>
+<body>
+  <script>
+    (function () {
+      const tema = localStorage.getItem('theme') || 'dark';
+      if (tema === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    })();
+  </script>
+  <!-- conteudo base -->
+    <H3 id="dinheiro">dinheiro:</H3>
+    <h3 id="level"> level:</h3>
+    <h3 id="xp"> xp:</h3>
+    <h3 id="atendidos"> clientes registrados:</h3>
+    <h3 id="funcionarios"> funcionarios:</h3>
+    <A id="link" class="link-jogo" href="config.html">configurações</A>
+    <div id="barraDeNavegacao">
+        <button id="btnChat" onclick="abrirchat()">chat</button>
+        <button id="btnLoja" onclick="abrirLoja()">loja</button>
+        <button id="btnBanco" onclick="abrirBanco()">banco</button>
+        <button id="btnCaixa" onclick="abrirCaixa()">caixa econômica</button>
+    </div>
+
+    <div id="clientesWindow" class="clientes-window">
+    <div class="clientes-header">
+        <h4>Clientes Atendidos</h4>
+        <button onclick="fecharClientes()">X</button>
+    </div>
+    <div id="clientesList" class="clientes-list"></div>
+    <div class="clientes-footer">
+        <button onclick="abrirConta()">abrir conta</button>
+    </div>
+</div>
+
+<div id="lojaWindow" class="loja-window">
+    <div class="loja-header">
+        <h4>loja</h4>
+        <button onclick="fecharLoja()">X</button>
+    </div>
+    <div id="lojaList" class="loja-list"></div>
+    <div class="loja-footer">
+        <button onclick="contratar()">linkdin</button>
+        <h4>dinheiro-1000 level-4</h4>
+        <h5>contrata um funcionario (reduz tempo de espera para chegar novos clientes)</h5>
+        
+        <button onclick="investimento()">investimento</button>
+        <h4>dinheiro-500$ level-2</h4>
+        <h5>gera 50 $ a cada 10 segundos</h5>
+    </div>
+</div>
+
+ <div id="bancoWindow" class="banco-window">
+    <div class="banco-header">
+        <h4>informaçoes do banco</h4>
+        <button onclick="fecharbanco()">X</button>
+    </div>
+    <div id="bancoList" class="banco"></div>
+    <div class="banco-footer">
+        <h3>banco:</h3>
+    </div>
+</div>
+
+<div id="caixaWindow" class="caixa-window">
+    <div class="caixa-header">
+        <h4>Caixa Econômica</h4>
+        <button onclick="fecharCaixa()">X</button>
+    </div>
+    <div id="caixaList" class="caixa-list">
+        <h3>ㅤㅤㅤㅤㅤㅤㅤㅤㅤcaixa econômica:</h3>
+    </div>
+    <div class="caixa-footer">
+        <h3 id="temporizador"></h3>
+        <div style="height: 250px;"></div>
+    </div>
+</div>
+
+<div id="terminalWindow" class="terminal-window">
+    <div class="terminal-header">
+        <h4>Terminal</h4>
+        <button onclick="fecharTerminal()">X</button>
+    </div>
+    <div id="terminalLog" class="terminal-log"></div>
+    <div class="terminal-footer">
+        <input id="terminalInput" type="text" placeholder="Digite um comando..." autocomplete="off">
+        <button id="terminalSend" onclick="enviarComandoTerminal()">Enviar</button>
+    </div>
+</div>
+
+<div id="guiOverlay" class="gui-overlay hidden">
+    <div class="guiAlert">
+      <p id="alerta"></p>
+      <div class="gui-buttons">
+        <button class="hidden" id="guiOk">OK</button>
+        <button class="hidden" id="guiCancel">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="jogofuncoes.js"></script>
+</body>
+</html>

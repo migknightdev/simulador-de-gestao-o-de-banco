@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttonfake.css">
+    <link rel="stylesheet" href="gui.css">
+</head>
+<body>
+    <script>
+        (function () {
+            const tema = localStorage.getItem('theme') || 'dark';
+            if (tema === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+    </script>
+    <H1>the bank</H1>
+    <a id="link" href="jogo.html">jogar</a>
+    <a id="link" href="principal.html">sair</a>
+    <a id="link" href="configMenu.html">configuraçoes</a>
+    <!-- GUI -->
+    <div id="guiOverlay" class="gui-overlay hidden">
+        <div class="guiAlert">
+            <p id="alerta"></p>
+            <div class="gui-buttons">
+                <button class="hidden" id="guiOk">OK</button>
+                <button class="hidden" id="guiCancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="jogofuncoes.js"></script>
+</body>
+</html>
+

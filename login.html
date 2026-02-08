@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="gui.css">
+</head>
+<body>
+<script>
+    (function () {
+        const tema = localStorage.getItem('theme') || 'dark';
+        if (tema === 'light') {
+            document.documentElement.classList.add('theme-light');
+        }
+    })();
+</script>
+<a href="principal.html">voltar</a><br>
+
+<input type="username" name="nickname" id="loginName" placeholder="username"><br>
+<input type="text" name="bankName" id="loginBankName" placeholder="nome do banco"><br>
+<input type="password"  name="password" id="loginPassword" placeholder="Senha"><br>
+<input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Mostrar Senha<br>
+<button onclick="login()">Adicionar Login</button>
+<button onclick="listarLogins()">Listar Logins</button>
+
+<script src="infologin.js"></script>
+<script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById('loginPassword');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+function login() {
+    let name = document.getElementById('loginName').value;
+    let bankName = document.getElementById('loginBankName').value;
+    let password = document.getElementById('loginPassword').value;
+
+    if (name && bankName && password) {
+        adicionarLogin(name, bankName, password);
+        alert('Login adicionado com sucesso!');
+        // Limpar campos
+        document.getElementById('loginName').value = '';
+        document.getElementById('loginBankName').value = '';
+        document.getElementById('loginPassword').value = '';
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+}
+</script>
+    <!-- GUI -->
+    <div id="guiOverlay" class="gui-overlay hidden">
+        <div class="guiAlert">
+            <p id="alerta"></p>
+            <div class="gui-buttons">
+                <button class="hidden" id="guiOk">OK</button>
+                <button class="hidden" id="guiCancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="jogofuncoes.js"></script>
+</body>
+</html>

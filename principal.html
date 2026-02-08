@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo teste</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttonfake.css">
+    <link rel="stylesheet" href="gui.css">
+</head>
+<body>
+    <script>
+        (function () {
+            const tema = localStorage.getItem('theme') || 'dark';
+            if (tema === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+    </script>
+    <H1>bem vindo ao the bank</H1>
+    <h2>antes de começar o jogo faça login!</h2>
+    <a id="link" href="login.html">Login</a><br>
+    <h2>se ja estiver logado, clique aqui:</h2>
+    <a id="link" href="logon.html">Começar jogo</a>
+    <!-- GUI -->
+    <div id="guiOverlay" class="gui-overlay hidden">
+        <div class="guiAlert">
+            <p id="alerta"></p>
+            <div class="gui-buttons">
+                <button class="hidden" id="guiOk">OK</button>
+                <button class="hidden" id="guiCancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="jogofuncoes.js"></script>
+</body>
+</html>
+

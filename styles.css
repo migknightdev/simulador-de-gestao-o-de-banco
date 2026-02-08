@@ -1,0 +1,165 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FUNDO GLOBAL */
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #14182a, #07080f);
+  color: #e6e9f2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+html.theme-light body {
+  background: radial-gradient(circle at top, #ffffff, #dfe5ea);
+  color: #1f2933;
+}
+
+/* TÍTULOS */
+h1 {
+  font-size: 2.1rem;
+  color: #8ab4ff;
+  text-shadow: 0 0 10px rgba(138, 180, 255, 0.35);
+}
+
+html.theme-light h1 {
+  color: #1a4fd8;
+  text-shadow: none;
+}
+
+h2 {
+  font-size: 1.05rem;
+  font-weight: normal;
+  color: #c2c6d6;
+}
+
+/* INPUTS (username, banco, senha) */
+input[type="username"],
+input[type="password"],
+input[type="text"] {
+  width: 260px;
+  padding: 10px 12px;
+
+  background: #0e1020;
+  border: 1px solid #2b2f4d;
+  border-radius: 8px;
+
+  color: #ffffff;
+  outline: none;
+
+  transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+html.theme-light input[type="username"],
+html.theme-light input[type="password"],
+html.theme-light input[type="text"] {
+  background: #ffffff;
+  border: 1px solid #c9d3dd;
+  color: #1f2933;
+}
+
+input::placeholder {
+  color: #7a7fa3;
+}
+
+input:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 8px rgba(79, 140, 255, 0.45);
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+  accent-color: #4f8cff;
+  cursor: pointer;
+}
+
+input[type="checkbox"] + span,
+label {
+  font-size: 0.9rem;
+  color: #b3b7cc;
+}
+
+/* BOTÕES NORMAIS (<button>) */
+button {
+  width: 260px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: linear-gradient(145deg, #2563eb, #1e40af);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 0 #162f7a,
+    0 8px 18px rgba(0, 0, 0, 0.45);
+
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+html.theme-light button {
+  background: linear-gradient(145deg, #3d8bff, #2a63ff);
+  box-shadow:
+    0 3px 0 #1b3f9e,
+    0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 1px 0 #162f7a,
+    0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* LINK "voltar" (simples, não botão) */
+a[href="principal.html"] {
+  color: #8ab4ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+a[href="principal.html"]:hover {
+  text-decoration: underline;
+}
+
+/* REMOVE O BR FEIO E SIMULA ESPAÇAMENTO */
+br {
+  display: none;
+}
+
+input,
+button,
+a#link {
+  margin-bottom: 8px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 420px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  input,
+  button,
+  a#link {
+    width: 90%;
+  }
+}

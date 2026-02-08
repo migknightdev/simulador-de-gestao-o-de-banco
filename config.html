@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="buttonfake.css">
+  <link rel="stylesheet" href="gui.css">
+</head>
+<body>
+  <script>
+    (function () {
+      const tema = localStorage.getItem('theme') || 'dark';
+      if (tema === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    })();
+  </script>
+
+  <h1>Configurações</h1>
+
+  <button onclick="resetProgress()">Resetar Progresso</button>
+  <button id="btnTheme" onclick="toggleTheme()">Tema: Dark</button>
+  <br><br>
+  <a id="link" href="jogo.html">Voltar ao jogo</a>
+  <a id="link" href="menu.html">Voltar ao menu</a>
+
+  <!-- GUI -->
+  <div id="guiOverlay" class="gui-overlay hidden">
+    <div class="guiAlert">
+      <p id="alerta"></p>
+      <div class="gui-buttons">
+        <button class="hidden" id="guiOk">OK</button>
+        <button class="hidden" id="guiCancel">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="jogofuncoes.js"></script>
+
+  <script>
+    function aplicarTema(tema) {
+      if (tema === 'light') {
+        document.documentElement.classList.add('theme-light');
+      } else {
+        document.documentElement.classList.remove('theme-light');
+      }
+      const btn = document.getElementById('btnTheme');
+      if (btn) {
+        btn.textContent = tema === 'light' ? 'Tema: Light' : 'Tema: Dark';
+      }
+    }
+
+    function toggleTheme() {
+      const atual = localStorage.getItem('theme') || 'dark';
+      const novo = atual === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', novo);
+      aplicarTema(novo);
+    }
+
+    aplicarTema(localStorage.getItem('theme') || 'dark');
+
+    async function resetProgress() {
+      const user = localStorage.getItem('currentUser') || 'default';
+
+      if (!(await guiConfirm(`Resetar progresso de ${user}?`))) return;
+
+      const p = `${user}_`;
+      [
+        'dinheiro','level','xp','xpRequired',
+        'clientesAtendidos','clientesPendentes',
+        'clienteCounter','investimentoAtivo', 'funcionarios',
+        'impostoAtivo', 'impostoDeadline'
+      ].forEach(k => localStorage.removeItem(p + k));
+
+      // Remove qualquer cheat salvo para o usuário atual
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (!key) continue;
+        if (key.startsWith(p + 'cheat') || key.startsWith(p + 'cheats')) {
+          localStorage.removeItem(key);
+        }
+      }
+
+      await guiAlert('Progresso resetado!');
+    }
+  </script>
+</body>
+</html>
+

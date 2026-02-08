@@ -1,0 +1,41 @@
+#link {
+  display: inline-block;              /* vira “caixa” de botão */
+  padding: 12px 24px;
+  background: linear-gradient(145deg, #2e7dff, #1a4fd8);
+  color: #fff;
+  text-decoration: none;              /* tira o sublinhado */
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+
+  border-radius: 10px;                /* botão moderno */
+  box-shadow: 
+    0 4px 0 #123a9e,                  /* sombra sólida (efeito físico) */
+    0 6px 12px rgba(0,0,0,0.3);
+
+  cursor: pointer;
+  user-select: none;                  /* não deixa selecionar texto */
+  transition: all 0.15s ease;
+}
+
+#link:hover {
+  background: linear-gradient(145deg, #3d8bff, #2a63ff);
+}
+
+#link:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 2px 0 #123a9e,
+    0 3px 6px rgba(0,0,0,0.2);
+}
+
+#link:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(61,139,255,0.6),
+    0 4px 0 #123a9e;
+}
+
+.link-jogo {
+  float: right;
+}
